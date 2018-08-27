@@ -1,5 +1,4 @@
 # ExtremeWorlds
- [![RimWorld Alpha 18](https://img.shields.io/badge/RimWorld%V1.0-brightgreen.svg)](http://rimworldgame.com/) 
 
 Reworking of original concepts from [ExtremeColds](https://github.com/AaronCRobinson/ExtremeColds).
 
