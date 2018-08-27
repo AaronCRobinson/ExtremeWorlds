@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>Extreme Worlds</name>
+    <author>Why_is_that</author>
+    <url>https://github.com/AaronCRobinson/ExtremeWorlds</url>
+    <targetVersion>1.0.0</targetVersion>
+    <description><![CDATA[[h1][b]Features:[/b][/h1]
+- Adds ScenPart to customize world temperatures
+- ScenPart exposes 'customTemperatures' curve to allow for scenarios to utilize completely different world temperatures
+- ScenPart UI expanded to allow customization via Scerario Editor
+- Two new scenarios added to eximplify the new ScenPart: 'Frozen Tribe' and 'Hot And Naked' (completely untested for playability)
+]]></description>
+</ModMetaData>
