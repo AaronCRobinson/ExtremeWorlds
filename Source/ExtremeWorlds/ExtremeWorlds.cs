@@ -39,6 +39,7 @@ namespace ExtremeWorlds
 #endif
             base.PreConfigure();
             CustomTemperatures_GameComponent customTemperaturesComp = Current.Game.GetComponent<CustomTemperatures_GameComponent>();
+            customTemperaturesComp.CustomTeperatures = true;
             customTemperaturesComp.Curve_CustomTemperatures = this.customTemperatures;
         }
 
@@ -112,6 +113,7 @@ namespace ExtremeWorlds
     // NOTE: GameComponents are the quickest to pick-up Scenario details (as world won't be generated yet)
     public class CustomTemperatures_GameComponent : GameComponent
     {
+        public bool CustomTeperatures= false;
         public ExposableCurve Curve_CustomTemperatures;
 
         public CustomTemperatures_GameComponent() { }
@@ -137,7 +139,7 @@ namespace ExtremeWorlds
         public static SimpleCurve GetTemperatureCurveHelper(OverallTemperature overallTemperature)
         {
             CustomTemperatures_GameComponent customTemperature = Current.Game.GetComponent<CustomTemperatures_GameComponent>();
-            if (customTemperature != null)
+            if (customTemperature?.CustomTeperatures == true)
                 return customTemperature.Curve_CustomTemperatures;
             return OverallTemperatureUtility.GetTemperatureCurve(overallTemperature); // default
         }
