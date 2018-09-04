@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 
-	<Operation Class="PatchOperationAdd">
+	<!--<Operation Class="PatchOperationAdd">
 		<xpath>/Defs/ScenarioDef[defName = "Crashlanded"]/scenario/parts</xpath>
 		<value>
 			<li Class="ExtremeWorlds.ScenPart_CustomTemperatures">
 				<def>CustomTemperatures</def>
 			</li>
 		</value>
-	</Operation>
+	</Operation>-->
 
 </Patch>
