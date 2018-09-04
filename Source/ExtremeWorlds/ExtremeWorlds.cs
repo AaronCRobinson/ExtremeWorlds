@@ -19,6 +19,10 @@ namespace ExtremeWorlds
 
     public class ScenPart_CustomTemperatures : ScenPart
     {
+        // TODO: store these over in settings...
+        public class TwoString { public string x; public string y; }
+        public List<TwoString> stringBuffers = new List<TwoString>();
+
         // https://github.com/AaronCRobinson/ExtremeColds/blob/master/Source/ExtremeColds/OverallTemperatureUtility.cs
         public SimpleCurve customTemperatures = new SimpleCurve
         {
@@ -31,6 +35,14 @@ namespace ExtremeWorlds
             { new CurvePoint(-20f, -58.5f), true },
             { new CurvePoint(0f, -57f), true }
         };
+
+        public ScenPart_CustomTemperatures()
+        {
+            foreach(CurvePoint cp in this.customTemperatures)
+                this.stringBuffers.Add(new TwoString() { x = cp.x.ToString(), y = cp.y.ToString() });
+            // NOTE: this slams the same object in multiple times (instead of new objects)
+            //this.stringBuffers.AddRange(Enumerable.Repeat<TwoString>(new TwoString() {x="",y=""}, customTempCount-stringBuffersCount));
+        }
 
         public override void PreConfigure()
         {
@@ -50,36 +62,39 @@ namespace ExtremeWorlds
             Listing_Standard scenListing = new Listing_Standard();
 
             scenListing.Begin(scenPartRect);
-
+           
             for (int i=0; i<this.customTemperatures.Points.Count(); i++)
             {
                 Rect rect = scenListing.GetRect(ScenPart.RowHeight);
                 Rect left = rect.LeftPartPixels(scenListing.ColumnWidth - 25f);
 
-                Vector2 v = (Vector2)this.customTemperatures[i];
+                Vector2 v = this.customTemperatures[i];
 
-                string strX = v.x.ToString();
-                string strY = v.y.ToString();
-                float tempX = v.x;
-                float tempY = v.y;
+                Widgets.TextFieldNumeric<float>(left.LeftHalf(), ref v.x, ref this.stringBuffers[i].x, -99999f, 99999f);
+                Widgets.TextFieldNumeric<float>(left.RightHalf(), ref v.y, ref this.stringBuffers[i].y, -99999f, 99999f);
 
-                Widgets.TextFieldNumeric<float>(left.LeftHalf(), ref tempX, ref strX, -99999f, -99999f);
-                Widgets.TextFieldNumeric<float>(left.RightHalf(), ref tempY, ref strY, -99999f, -99999f);
+                this.customTemperatures[i] = new CurvePoint(v);
 
-                v.x = tempX;
-                v.y = tempY;
-
-                // right
                 if (Widgets.ButtonImage(rect.RightPartPixels(24f), Textures.DeleteX))
+                {
                     this.customTemperatures.Points.RemoveAt(i);
+                    this.stringBuffers.RemoveAt(i);
+                }
             }
 
             if (Widgets.ButtonText(scenListing.GetRect(ScenPart.RowHeight), "Add Point"))
             {
                 if (this.customTemperatures.Count() > 0)
-                    this.customTemperatures.Points.Add(new CurvePoint(this.customTemperatures.Last()));
+                {
+                    CurvePoint cp = new CurvePoint(this.customTemperatures.Last());
+                    this.customTemperatures.Points.Add(cp);
+                    this.stringBuffers.Add(new TwoString() { x=cp.x.ToString(), y=cp.y.ToString() });
+                }
                 else
+                {
                     this.customTemperatures.Points.Add(new CurvePoint(0f, 0f));
+                    this.stringBuffers.Add(new TwoString() { x="0", y="0"});
+                }
             }
 
             scenListing.End();
