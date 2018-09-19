@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtremeWorlds.cs" />
+    <Compile Include="HarmonyTools.cs" />
+    <Compile Include="OverallTemperatureUtilityPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

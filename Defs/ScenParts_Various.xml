@@ -13,4 +13,14 @@
     <summaryPriority>1000</summaryPriority>
   </ScenPartDef>
 
+  <ScenPartDef>
+    <defName>CustomRainfalls</defName>
+    <label>custom rainfalls</label>
+    <description>Allows for custom rainfall settings for worlds.</description>
+    <scenPartClass>ExtremeWorlds.ScenPart_CustomRainfall</scenPartClass>
+    <category>Misc</category>
+    <selectionWeight>1.0</selectionWeight>
+    <summaryPriority>1000</summaryPriority>
+  </ScenPartDef>
+
 </Defs>

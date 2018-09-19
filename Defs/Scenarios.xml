@@ -165,7 +165,7 @@
 				<!-- ExtremeWorlds -->
 				<li Class="ExtremeWorlds.ScenPart_CustomTemperatures">
 					<def>CustomTemperatures</def> <!-- Defaults to ExtremeColds grandfathered setting -->
-					<customTemperatures>
+					<curve>
 						<points>
 							<li>0,57</li>
 							<li>20,58.5</li>
@@ -176,7 +176,7 @@
 							<li>100,125</li>
 							<li>9999,9999</li>
 						</points>
-					</customTemperatures>
+					</curve>
 				</li>
 
       </parts>
