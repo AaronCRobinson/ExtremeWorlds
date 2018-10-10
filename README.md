@@ -1,4 +1,4 @@
-# ExtremeWorlds [![RimWorld Beta 19](https://img.shields.io/badge/RimWorld-Beta%20v0.19-green.svg?longCache=true&style=plastic)](http://rimworldgame.com/)
+# ExtremeWorlds [![RimWorld 1.0](https://img.shields.io/badge/RimWorld-1.0-green.svg?longCache=true&style=plastic)](http://rimworldgame.com/)
 
 Reworking of original concepts from [ExtremeColds](https://github.com/AaronCRobinson/ExtremeColds).
 
